@@ -1,8 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+
+import * as rustboy from 'rustboy';
+
+import logo from '../../logo.svg';
 import './App.css';
 
 function App() {
+  useEffect(() => {
+    rustboy.greet();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
