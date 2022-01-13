@@ -7,7 +7,10 @@ import './App.css';
 
 function App() {
   useEffect(() => {
-    rustboy.greet();
+    console.log(rustboy);
+    if (rustboy.greet && rustboy.greet instanceof Function) {
+      rustboy.greet();
+    }
   }, []);
 
   return (
