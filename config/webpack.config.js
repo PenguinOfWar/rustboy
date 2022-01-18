@@ -225,6 +225,10 @@ module.exports = function (webpackEnv) {
         : isEnvDevelopment &&
           (info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'))
     },
+    experiments: {
+      asyncWebAssembly: true,
+      syncWebAssembly: true
+    },
     cache: {
       type: 'filesystem',
       version: createEnvironmentHash(env.raw),
@@ -538,11 +542,6 @@ module.exports = function (webpackEnv) {
                 },
                 'sass-loader'
               )
-            },
-            {
-              test: /\.wasm$/,
-              exclude: /node_modules/,
-              loader: 'wasm-loader'
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.

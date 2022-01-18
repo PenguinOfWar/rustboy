@@ -9,11 +9,20 @@ use wasm_bindgen::prelude::*;
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 #[wasm_bindgen]
-extern {
+extern "C" {
     fn alert(s: &str);
 }
 
 #[wasm_bindgen]
-pub fn greet() {
-    alert("Hello, temp-rust!");
+pub fn greet(name: &str) {
+    let message = format!("Hello {} using web-sys", name);
+    alert(&message);
+}
+
+// custom loader for rustboy
+#[wasm_bindgen]
+pub fn boot() {
+    use web_sys::console;
+
+    console::log_1(&"Booting from WASM".into());
 }
