@@ -10,6 +10,10 @@ function App() {
     if (rustboy.boot && rustboy.boot instanceof Function) {
       rustboy.boot();
     }
+    if (rustboy.list_games && rustboy.list_games instanceof Function) {
+      const games = rustboy.list_games();
+      console.log(games);
+    }
   }, []);
 
   return (

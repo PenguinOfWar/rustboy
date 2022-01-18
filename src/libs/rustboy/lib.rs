@@ -1,3 +1,4 @@
+mod chip8;
 mod utils;
 
 use wasm_bindgen::prelude::*;
@@ -13,16 +14,26 @@ extern "C" {
     fn alert(s: &str);
 }
 
+// example for using alert js module
 #[wasm_bindgen]
 pub fn greet(name: &str) {
     let message = format!("Hello {} using web-sys", name);
     alert(&message);
 }
 
-// custom loader for rustboy
+#[wasm_bindgen]
+pub fn list_games() -> js_sys::Array {
+    return chip8::games();
+}
+
+// boot rustboy
 #[wasm_bindgen]
 pub fn boot() {
     use web_sys::console;
 
+    let games = chip8::games();
+
     console::log_1(&"Booting from WASM".into());
+    console::log_1(&format!("{:?}", games).into());
+    chip8::main();
 }

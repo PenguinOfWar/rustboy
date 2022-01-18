@@ -1,3 +1,6 @@
+use js_sys::Array;
+use wasm_bindgen::prelude::*;
+
 #[allow(dead_code)]
 pub fn set_panic_hook() {
     // When the `console_error_panic_hook` feature is enabled, we can call the
@@ -8,4 +11,12 @@ pub fn set_panic_hook() {
     // https://github.com/rustwasm/console_error_panic_hook#readme
     #[cfg(feature = "console_error_panic_hook")]
     console_error_panic_hook::set_once();
+}
+
+pub fn to_array(strings: &[&str]) -> Array {
+    let arr = Array::new_with_length(strings.len() as u32);
+    for (i, s) in strings.iter().enumerate() {
+        arr.set(i as u32, JsValue::from_str(s));
+    }
+    arr
 }
