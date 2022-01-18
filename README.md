@@ -1,10 +1,12 @@
-# Getting Started with Create React App
+# Rustboy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Experiments in Rust and WASM
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/).
 
 ## Usage
 
-1. `wasm-pack build` before first run
+1. `wasm-pack build` before first run to build out WASM modules to `./pkg`
 2. `npm run start`
 
 ## Available Scripts
@@ -34,7 +36,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### wasm-pack
+### `wasm-pack build`
 
 Update local WASM package with `wasm-pack build`. Output in `./pkg` directory.
 
